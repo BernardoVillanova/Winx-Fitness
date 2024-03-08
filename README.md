@@ -72,10 +72,3 @@ $ ```git branch```
 
 ### Cooming Soon
 
-
-
-
-
-#Teste Github:
-
-Leo;
