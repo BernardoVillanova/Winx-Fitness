@@ -13,3 +13,7 @@ CREATE TABLE Personal (
     especialidade VARCHAR(100),
     valor_aula DECIMAL(10,2)
 );
+/* EXEMPLO INSERÇÃO
+INSERT INTO Personal (primeiro_nome, sobrenome, data_nascimento, email, telefone, endereco, cidade, estado, codigo_postal, pais, especialidade, valor_aula)
+              VALUES ('João', 'Silva', '1990-05-15', 'joao@example.com', '123456789', 'Rua Exemplo, 123', 'Cidade Exemplo', 'Estado Exemplo', '12345-678', 'Brasil', 'Idosos', 50.00);
+*/
