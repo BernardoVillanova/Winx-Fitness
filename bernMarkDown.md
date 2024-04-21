@@ -1,3 +1,0 @@
-# Bern MarkDown
-
-- First Commit
