@@ -1,35 +1,343 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
-  font-weight: normal;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-a,
-.green {
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-image: url('/src/assets/tela-de-fundo.png');
+  background-color: #f7f7f7;
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto;
+}
+
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.menu li {
+  margin-bottom: 10px; /* espaçamento entre os itens do menu */
+  display: flex;
+  transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+  border-radius: 15px;
+}
+
+.menu li:hover {
+  background-color: #ff0000; /* cor de fundo ao passar o mouse */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* sombra ao passar o mouse */
+}
+
+.menu li a {
+  padding: 10px 5px;
+  color: #000000; 
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+  font-weight: 500;
+  border-radius: 1rem;
+  text-align: left;
+
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+.menu li a:hover {
+  color: #ffffff; /* cor do texto ao passar o mouse */
+  text-decoration: none;
+}
+
+.botao {
+  background: #e21;
+  color: #ffffff;
+  padding: 10px 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba (0, 0, 0, 0.1);
+}
+
+.botao-2 {
+  background: #e21;
+  color: #ffffff;
+  padding: 10px 30px;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 1rem;
+  margin-right: 75px;
+}
+
+.botao-3 {
+  background: #e21;
+  color: #ffffff;
+  padding: 10px 40px;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 1rem;
+
+}
+
+.botoes {
+  display: inline-flex;
+  margin-top: 130px;
+  display: flex;
+}
+
+.btn-mobile {
+  display: none;
+}
+
+.router-link {
+  font-size: 1.2rem;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.introducao {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.introducao-texto h1 {
+  text-transform: uppercase;
+  margin-top: 100px;
+  font-size: 40px;
+}
+.introducao-texto p {
+  font-size: 15px;
+  margin-top: 50px;
+}
+
+/* BREAKPOINTS */
+
+@media (max-width: 1560px) {
+  .introducao-texto {
+    margin-right: 100px;
+  }
+
+  .botoes {
+    margin-right: 100px;
+  }
+
+  body {
+    background-position: right 500px center;
+    background-position-y: 30px;/* move a imagem de fundo 20px para a direita */
+    background-size: auto
+
+  }
+}
+@media (max-width: 1350px) {
+  .introducao-texto {
+    margin-right: 150px;
+  }
+
+  .botoes {
+    margin-right: 150px;
+  }
+
+  body {
+    background-position: left -200px center;
+    background-position-y: 30px; /* move a imagem de fundo 20px para a direita */
+    background-size: auto
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1300px) {
+  body {
+    background-position: right 450px center;
+    background-position-y: 60px;
+    background-size: auto
+  }
+}
+
+@media (max-width: 1250px) {
+  body {
+    background-position: left -250px center;
+    background-position-y: 60px;
+    background-size: auto
+  }
+}
+
+@media (max-width: 1150px) {
+  body {
+    background-position: left -150px center;
+    background-position-y: 130px;
+    background-size: 800px 568px;
+  }
+
+  .introducao-texto {
+    margin-right: 120px;
+  }
+
+  .botoes {
+    margin-right: 120px;
+  }
+
+}
+
+@media (min-width: 1051px) {
+  .btn-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 1050px) { 
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* largura do menu */
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 1000;
+    flex-direction: column; /* menu em coluna */
+    padding-top: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* sombra no menu */
+    transform: translateX(-250px); /* menu para fora da tela */
+    transition: none;/* transição do menu */
+  }
+
+  .menu.active {
+    transform: translateX(0); /* menu volta para a tela */
+    transition: transform 0.3s ease;
+  }
+
+  .btn-mobile {
+    display: block;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: auto;
+    position: fixed;
+    top: 35px;
+    right: 5%;
+    
+    z-index: 1001; /* Garante que o botão do menu esteja acima do menu */
+  }
+}
+
+@media (max-width: 1000px) {
+  .introducao-texto {
+    margin-right: 70px;
+  }
+
+  .botoes {
+    margin-right: 70px;
+  }
+}
+
+@media (max-width: 950px) {
+  .introducao-texto {
+    margin-right: 20px;
+  }
+
+  .botoes {
+    margin-right: 20px;
+  }
+
+  
+}
+
+@media (max-width: 900px) {
+  body {
+    background-position: left -390px center;
+    background-position-y: 120px;
+  }
+
+}
+
+@media (max-width: 650px) {
+  body {
+    background-position: left -450px center;
+    background-position-y: 120px;
+  }
+}
+
+
+@media (max-width: 600px) {
   body {
     display: flex;
-    place-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    background-image: none;
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .introducao {
+    width: 100%;
+    margin-left: 40px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center; /* Alinha os itens no eixo transversal (verticalmente) */
+    justify-content: center; /* Alinha os itens no eixo principal (horizontalmente) */
+     /* Alinha o texto ao centro */
+    
+  }
+
+  
+
+ 
+  .menu li {
+    width: auto; /* largura automática para os itens do menu */
+  }
+
+  .botao {
+    margin-left: -20px;
+  }
+
+  .botoes {
+    margin-top: 80px;
+    font-size: 12px;
+  }
+
+  .botao-2 {
+    white-space: nowrap;
+    padding: 10px 30px; /* define o mesmo padding para ambos os botões */
+    margin-left: -20px;
+  }
+
+
+  .botao-3 {
+    padding: 10px 35px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .btn-mobile {
+     right: 5%;
   }
 }
+
+
