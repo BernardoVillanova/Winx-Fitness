@@ -6,7 +6,7 @@
       <span class="winx">winx</span>
       <span class="fitness">FITNESS</span>
     </h1> 
-      <img src="./images/Imagem_exercicio_login.png" class="background-image" alt="Imagem de fundo" />
+      <img src="../assets/ImgProjetoWinxFitness.png" class="background-image" alt="Imagem de fundo" />
       <!-- Div de login -->
       <div class="login-container">
         <h2 class="login-title" style="font-weight: bold; color:#0c7474;">Login</h2>
@@ -19,7 +19,7 @@
           </div>
           <button @mouseover="hoverEffect" @mouseout="hoverEffect" type="submit" class="login-button">Entrar</button>
         </form>
-        <p class="register-link" style="font-size: 1.3rem;">Não possui cadastro? <router-link to="/register" class="register-link-green">Cadastre-se</router-link></p>
+        <p class="register-link" style="font-size: 1.3rem;">Não possui cadastro? <router-link to="/CadastroAluno" class="register-link-green">Cadastre-se</router-link></p>
       </div>
     </div>
   </template>

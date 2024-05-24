@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <router-link to="/" class="botao">Login</router-link>
+    <router-link to="/Login" class="botao">Login</router-link>
     <nav class="nav">
       <button class="btn-mobile" @click="toggleMenu">
         <i class="bx" :class="{'bx-menu': !isMenuOpen, 'bx-x': isMenuOpen}" style="color: #ff0000;" id="menuIcon"></i>
