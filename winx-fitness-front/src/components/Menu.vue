@@ -3,13 +3,12 @@
     <router-link to="/" class="botao">Login</router-link>
     <nav class="nav">
       <button class="btn-mobile" @click="toggleMenu">
-        <!-- Ícone do menu de hambúrguer com cor personalizada -->
         <i class="bx" :class="{'bx-menu': !isMenuOpen, 'bx-x': isMenuOpen}" style="color: #ff0000;" id="menuIcon"></i>
       </button>
       <ul class="menu" :class="{ 'active': isMenuOpen }">
         <li><router-link to="/" class="router-link">Home</router-link></li>
         <li><router-link to="/Sobre" class="router-link">Sobre</router-link></li>
-        <li><router-link to="/QueroSerAluno" class="router-link">Quero ser Aluno</router-link></li>
+        <li><router-link to="/registerStudent" class="router-link">Quero ser Aluno</router-link></li>
         <li><router-link to="/SouProfessor" class="router-link">Sou professor</router-link></li>
       </ul>
     </nav>
@@ -18,7 +17,7 @@
   <main class="introducao">
       
       <div class="introducao-texto">
-        <h1>The best time for <br>sports is snow</h1>
+        <h1>The best time for <br>sports is now</h1>
         <p>Generate Lorem Ipsum placeholder text. <br> Select the number of characters, words, <br> sentences or paragraphs, and hit generate!</p>
       </div>
 

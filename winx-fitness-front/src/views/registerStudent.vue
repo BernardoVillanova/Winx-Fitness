@@ -5,7 +5,7 @@
       <span class="winx">Winx</span>
       <span class="fitness">FITNESS</span>
     </h1> 
-    <img src="./assets/telaCadAluno.png" class="background-image" alt="Imagem de fundo" />
+    <img src="../assets/telaCadAluno.png" class="background-image" alt="Imagem de fundo" />
     <div class="login-container">
       <h2 class="login-title" style="font-weight: bold; color:#0c7474;">Cadastro Aluno</h2>
       <form @submit.prevent="login" class="form">

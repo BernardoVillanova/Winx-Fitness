@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Menu />
+    <Menu v-if="$route.path === '/'" />
     <router-view></router-view>
   </div>
 </template>
+
 
 <script>
 import Menu from './components/Menu.vue';
