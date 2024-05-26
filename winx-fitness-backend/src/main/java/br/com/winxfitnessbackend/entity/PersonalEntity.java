@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -49,4 +50,6 @@ public class PersonalEntity {
     @Column(name = "valor_aula")
     private Float valorAula;
 
+    @OneToMany(mappedBy = "personal")
+    private List<AlunoEntity> alunoList;
 }

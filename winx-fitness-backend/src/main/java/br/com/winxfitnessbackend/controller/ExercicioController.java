@@ -1,16 +1,17 @@
 package br.com.winxfitnessbackend.controller;
 
 
+import br.com.winxfitnessbackend.config.ManualAuth;
 import br.com.winxfitnessbackend.dto.ExercicioDto;
 import br.com.winxfitnessbackend.service.ExercicioService;
-import org.springframework.http.HttpEntity;
+import jakarta.servlet.ServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/exercicio")
+@RequestMapping("/api/v1")
 public class ExercicioController {
 
     private ExercicioService exercicioService;
@@ -19,26 +20,46 @@ public class ExercicioController {
         this.exercicioService = exercicioService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<ExercicioDto>> findAll() {
-        return ResponseEntity.ok(exercicioService.retornaTodosExercicios());
+    @GetMapping("/exercicio")
+    public ResponseEntity<List<ExercicioDto>> findAll(@RequestHeader ServletRequest request) {
+        try {
+            ManualAuth.validaAuth(request);
+            return ResponseEntity.ok(exercicioService.retornaTodosExercicios());
+        }catch (Exception exception) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-    @PostMapping
-    public ResponseEntity<Void> insereNovoExercicio(@RequestBody ExercicioDto exercicioDto) {
-        exercicioService.insereNovoExercicio(exercicioDto);
-        return ResponseEntity.accepted().build();
+    @PostMapping("/exercicio")
+    public ResponseEntity<Void> insereNovoExercicio(@RequestHeader ServletRequest request, @RequestBody ExercicioDto exercicioDto) {
+        try {
+            ManualAuth.validaAuth(request);
+            exercicioService.insereNovoExercicio(exercicioDto);
+            return ResponseEntity.accepted().build();
+        } catch (Exception exception) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> insereNovoExercicio(@PathVariable("id") Long id, @RequestBody ExercicioDto exercicioDto) {
-        exercicioService.atualizaExercicio(id, exercicioDto);
-        return ResponseEntity.accepted().build();
+    @PutMapping("/exercicio/{id}")
+    public ResponseEntity<Void> insereNovoExercicio(@RequestHeader ServletRequest request, @PathVariable("id") Long id, @RequestBody ExercicioDto exercicioDto) {
+        try {
+            ManualAuth.validaAuth(request);
+            exercicioService.atualizaExercicio(id, exercicioDto);
+            return ResponseEntity.accepted().build();
+        } catch (Exception exception) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletaExercicio(@PathVariable("id") Long id) {
-        exercicioService.deleteExercicio(id);
-        return ResponseEntity.accepted().build();
+    @DeleteMapping("/exercicio/{id}")
+    public ResponseEntity<Void> deletaExercicio(@RequestHeader ServletRequest request, @PathVariable("id") Long id) {
+        try {
+            ManualAuth.validaAuth(request);
+            exercicioService.deleteExercicio(id);
+            return ResponseEntity.accepted().build();
+        } catch (Exception exception) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

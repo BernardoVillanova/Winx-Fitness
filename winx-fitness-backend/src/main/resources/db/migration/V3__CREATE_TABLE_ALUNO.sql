@@ -11,5 +11,7 @@ CREATE TABLE IF NOT EXISTS aluno (
     altura DECIMAL(5,2),
     objetivo VARCHAR(100),
     nivel_fumante INT,
-    nivel_sedentario INT
+    nivel_sedentario INT,
+    id_personal INT DEFAULT NULL,
+    FOREIGN KEY (id_personal) REFERENCES personal(id)
 );

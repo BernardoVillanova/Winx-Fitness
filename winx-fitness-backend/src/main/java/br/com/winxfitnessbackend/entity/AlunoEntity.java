@@ -48,5 +48,8 @@ public class AlunoEntity {
     @Column(name = "nivel_sedentario")
     private Integer sedentario;
 
+    @ManyToOne
+    @JoinColumn(name = "id_personal")
+    private PersonalEntity personal;
 
 }

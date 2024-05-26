@@ -1,30 +1,38 @@
-//package br.com.winxfitnessbackend.controller;
-//
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//@RestController
-//public class LoginController {
-//
-//    private final AuthenticationManager authenticationManager;
-//
-//    public LoginController(AuthenticationManager authenticationManager) {
-//        this.authenticationManager = authenticationManager;
-//    }
-//
-//    @PostMapping("/login")
-//    public ResponseEntity<Void> login(@RequestBody LoginRequest loginRequest) {
-//        Authentication authenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.username(), loginRequest.password());
-//        Authentication authenticationResponse = this.authenticationManager.authenticate(authenticationRequest);
-//
-//        return null;
-//    }
-//
-//    private record LoginRequest(String username, String password) {
-//    }
-//}
+package br.com.winxfitnessbackend.controller;
+
+import br.com.winxfitnessbackend.config.ManualAuth;
+import br.com.winxfitnessbackend.dto.LoginDto;
+import br.com.winxfitnessbackend.service.LoginService;
+import jakarta.servlet.ServletRequest;
+import org.apache.catalina.connector.RequestFacade;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/v1")
+public class LoginController {
+
+    private LoginService loginService;
+
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
+        String token = loginService.efetuarLogin(loginDto);
+
+        if (!token.isBlank()) {
+            return ResponseEntity.ok(token);
+        }
+
+        return ResponseEntity.badRequest().body("");
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(ServletRequest request) {
+        ManualAuth.mTokens.remove(((RequestFacade) request).getHeader("token"));
+
+        return ResponseEntity.accepted().build();
+    }
+}
