@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: winxpass
+      #      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: winxpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    #    networks:
+    #      - mynetwork
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    image: docker.io/lf09/winx-fitness-backend
+    container_name: winx-fitness-backend-container
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/winxfitness?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: winxpass
+      SPRING_DATASORUCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+    ports:
+      - "8080:8080"
+#    networks:
+#      - mynetwork
+
+volumes:
+  mysql_data:
+
+#networks:
+#  mynetwork:
