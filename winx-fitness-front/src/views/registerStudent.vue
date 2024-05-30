@@ -45,6 +45,7 @@
 
 <script>
 import axios from 'axios';
+import clienteHttp from '../http/index.ts'
 
 export default {
   data() {
@@ -82,6 +83,9 @@ export default {
 
       try {
         const formDataJSON = JSON.stringify(formData);
+        const httpRequest = await clienteHttp.post('/aluno', formDataJSON).then (
+          resposta => alert(resposta.data)
+        );
 
         const blob = new Blob([formDataJSON], { type: 'application/json' });
 
@@ -95,6 +99,7 @@ export default {
         console.error('Erro ao salvar formulário:', error);
         alert('Erro ao salvar formulário. Por favor, tente novamente.');
       }
+      // return httpRequest;
     }
   }
 }

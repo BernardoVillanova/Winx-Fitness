@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from './views/Home.vue'
 import Sobre from './views/Sobre.vue'
-import CadastroAluno from './views/registerStudent.vue'
+import registerStudent from './views/registerStudent.vue'
 import SouProfessor from './views/SouProfessor.vue'
 import Login from './views/loginScreen.vue'
 import Exercicio from './views/MondayExercise.vue'
@@ -29,9 +29,9 @@ const routes = [
     component: Sobre
   },
   {
-    path: '/CadastroAluno',
-    name: 'CadastroAluno',
-    component: CadastroAluno
+    path: '/registerStudent',
+    name: 'registerStudent',
+    component: registerStudent
   },
   {
     path: '/SouProfessor',
