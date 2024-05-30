@@ -23,7 +23,7 @@ public class PersonalController {
     @GetMapping("/personal")
     public ResponseEntity<List<PersonalDto>> buscaTodosPersonal(ServletRequest request) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             return ResponseEntity.ok(personalService.findAll());
         } catch (Exception exception) {
             return ResponseEntity.badRequest().build();
@@ -33,7 +33,7 @@ public class PersonalController {
     @PostMapping("/personal")
     public ResponseEntity<Void> insereNovoPersonal(ServletRequest request, @RequestBody PersonalDto personalDto) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             personalService.insereNovoPersonal(personalDto);
             return ResponseEntity.accepted().build();
         } catch (Exception exception) {
@@ -44,7 +44,7 @@ public class PersonalController {
     @PutMapping("/personal/{id}")
     public ResponseEntity<Void> atualizaPersonal(ServletRequest request, @PathVariable("id") Long id, @RequestBody PersonalDto personalDto) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             personalService.atualizaPersonal(id, personalDto);
             return ResponseEntity.accepted().build();
         } catch (Exception exception) {
@@ -55,7 +55,7 @@ public class PersonalController {
     @DeleteMapping("/personal/{id}")
     public ResponseEntity<Void> deletaPersonal(ServletRequest request, @PathVariable("id") Long id) {
     try {
-        ManualAuth.validaAuth(request);
+//        ManualAuth.validaAuth(request);
         personalService.deletePersonal(id);
         return ResponseEntity.accepted().build();
     } catch (Exception exception) {

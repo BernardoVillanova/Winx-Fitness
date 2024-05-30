@@ -23,7 +23,7 @@ public class ExercicioController {
     @GetMapping("/exercicio")
     public ResponseEntity<List<ExercicioDto>> findAll(@RequestHeader ServletRequest request) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             return ResponseEntity.ok(exercicioService.retornaTodosExercicios());
         }catch (Exception exception) {
             return ResponseEntity.badRequest().build();
@@ -33,7 +33,7 @@ public class ExercicioController {
     @PostMapping("/exercicio")
     public ResponseEntity<Void> insereNovoExercicio(@RequestHeader ServletRequest request, @RequestBody ExercicioDto exercicioDto) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             exercicioService.insereNovoExercicio(exercicioDto);
             return ResponseEntity.accepted().build();
         } catch (Exception exception) {
@@ -44,7 +44,7 @@ public class ExercicioController {
     @PutMapping("/exercicio/{id}")
     public ResponseEntity<Void> insereNovoExercicio(@RequestHeader ServletRequest request, @PathVariable("id") Long id, @RequestBody ExercicioDto exercicioDto) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             exercicioService.atualizaExercicio(id, exercicioDto);
             return ResponseEntity.accepted().build();
         } catch (Exception exception) {
@@ -55,7 +55,7 @@ public class ExercicioController {
     @DeleteMapping("/exercicio/{id}")
     public ResponseEntity<Void> deletaExercicio(@RequestHeader ServletRequest request, @PathVariable("id") Long id) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             exercicioService.deleteExercicio(id);
             return ResponseEntity.accepted().build();
         } catch (Exception exception) {

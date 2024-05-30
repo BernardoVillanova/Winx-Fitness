@@ -1,6 +1,7 @@
 package br.com.winxfitnessbackend.controller;
 
 import br.com.winxfitnessbackend.config.ManualAuth;
+import br.com.winxfitnessbackend.dto.AlunoCadastroDto;
 import br.com.winxfitnessbackend.dto.AlunoDto;
 import br.com.winxfitnessbackend.dto.ExercicioDto;
 import br.com.winxfitnessbackend.service.AlunoService;
@@ -25,7 +26,7 @@ public class AlunoController {
     @GetMapping("/aluno")
     public ResponseEntity<List<AlunoDto>> buscaTodosAlunos(ServletRequest request) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             return ResponseEntity.ok(alunoService.findAll());
         } catch (Exception exception) {
             return ResponseEntity.badRequest().build();
@@ -33,10 +34,10 @@ public class AlunoController {
     }
 
     @PostMapping("aluno")
-    public ResponseEntity<Void> insereNovoExercicio(ServletRequest request, @RequestBody AlunoDto alunoDto) {
+    public ResponseEntity<Void> insereNovoExercicio(ServletRequest request, @RequestBody AlunoCadastroDto alunoCadastroDto) {
         try {
-            ManualAuth.validaAuth(request);
-            alunoService.insereNovoAluno(alunoDto);
+//            ManualAuth.validaAuth(request);
+            alunoService.insereNovoAluno(alunoCadastroDto);
             return ResponseEntity.accepted().build();
         } catch (Exception exception) {
             return ResponseEntity.badRequest().build();
@@ -46,7 +47,7 @@ public class AlunoController {
     @PutMapping("/aluno/{id}")
     public ResponseEntity<Void> atualizaAluno(ServletRequest request, @PathVariable("id") Long id, @RequestBody AlunoDto alunoDto) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             alunoService.atualizaAluno(id, alunoDto);
             return ResponseEntity.accepted().build();
 
@@ -58,7 +59,7 @@ public class AlunoController {
     @DeleteMapping("/aluno/{id}")
     public ResponseEntity<Void> deletaAluno(ServletRequest request, @PathVariable("id") Long id) {
         try {
-            ManualAuth.validaAuth(request);
+//            ManualAuth.validaAuth(request);
             alunoService.deleteAluno(id);
             return ResponseEntity.accepted().build();
         } catch (Exception exception) {
