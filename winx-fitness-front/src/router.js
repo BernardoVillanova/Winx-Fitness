@@ -6,12 +6,18 @@ import registerStudent from './views/registerStudent.vue'
 import SouProfessor from './views/SouProfessor.vue'
 import Login from './views/loginScreen.vue'
 import Exercicio from './views/MondayExercise.vue'
+import cadastroEx from './views/cadastroEx.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/cadastroEx',
+    name: 'cadastroEx',
+    component: cadastroEx
   },
   {
     path: '/Exercicio',
