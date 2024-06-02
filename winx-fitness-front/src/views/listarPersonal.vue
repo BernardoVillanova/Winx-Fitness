@@ -24,8 +24,8 @@
       </div>
       <div class="professionals">
         <div v-for="professional in professionals" :key="professional.id" class="professional">
-          <img :src="professional.image" :alt="professional.name">
-          <h2>{{ professional.name }}</h2>
+          <img :src="professional.image" :alt="professional.nome">
+          <h2>{{ professional.nome }}</h2>
           <div class="rating">
             <p>Especialidades: {{ professional.specialty }}</p> 
           </div>
@@ -56,7 +56,7 @@ export default {
   methods: {
     async fetchProfessionals() {
       try {
-        const response = await axios.get('/personals.json');
+        const response = await clienteHttp.get('/personal');
         this.professionals = response.data;
       } catch (error) {
         console.error('Erro ao carregar professionals:', error);

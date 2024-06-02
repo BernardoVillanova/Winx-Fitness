@@ -4,11 +4,15 @@ import br.com.winxfitnessbackend.dto.AlunoDto;
 import br.com.winxfitnessbackend.dto.PersonalDto;
 import br.com.winxfitnessbackend.entity.AlunoEntity;
 import br.com.winxfitnessbackend.entity.PersonalEntity;
+import br.com.winxfitnessbackend.enums.Especialidade;
 import br.com.winxfitnessbackend.repository.AlunoRepository;
 import br.com.winxfitnessbackend.repository.PersonalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +26,10 @@ public class PersonalService {
         List<PersonalDto> personalDtoList = new ArrayList<>();
 
         for (PersonalEntity personalEntity : personalRepository.findAll()) {
-            personalDtoList.add(new PersonalDto(personalEntity.getNome(), personalEntity.getEmail()));
+            personalDtoList.add(new PersonalDto(personalEntity.getNome(),
+                    Especialidade.getDecricaoByID(personalEntity.getId().intValue()),
+                    BigDecimal.valueOf(personalEntity.getValorAula()).setScale(2, RoundingMode.CEILING)
+            ));
         }
 
         return personalDtoList;
