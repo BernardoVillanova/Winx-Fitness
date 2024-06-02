@@ -1,32 +1,33 @@
-  <template>
-    <div>
-      <div class="background"></div>
-      <!-- Título WINX Fitness -->
-      <h1 class="logo">
+<template>
+  <div>
+    <div class="background"></div>
+    <!-- Título WINX Fitness -->
+    <h1 class="logo">
       <span class="winx">winx</span>
       <span class="fitness">FITNESS</span>
     </h1> 
-      <img src="../assets/ImgProjetoWinxFitness.png" class="background-image" alt="Imagem de fundo" />
-      <!-- Div de login -->
-      <div class="login-container">
-        <h2 class="login-title" style="font-weight: bold; color:#0c7474;">Login</h2>
-        <form @submit.prevent="login" class="form">
-          <div class="form-group">
-            <input type="email" id="email" v-model="email" required class="input" placeholder="Email  " />
-          </div>
-          <div class="form-group">
-            <input type="password" id="password" v-model="password" required class="input" placeholder="Senha" />
-          </div>
-          <button @mouseover="hoverEffect" @mouseout="hoverEffect" type="submit" class="login-button">Entrar</button>
-        </form>
-        <p class="register-link" style="font-size: 1.3rem;">Não possui cadastro? <router-link to="/CadastroAluno" class="register-link-green">Cadastre-se</router-link></p>
-      </div>
+    <img src="../assets/ImgProjetoWinxFitness.png" class="background-image" alt="Imagem de fundo" />
+    <!-- Div de login -->
+    <div class="login-container">
+      <h2 class="login-title" style="font-weight: bold; color:#0c7474;">Login</h2>
+      <form @submit.prevent="login" class="form">
+        <div class="form-group">
+          <input type="email" id="email" v-model="email" required class="input" placeholder="Email  " />
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" v-model="password" required class="input" placeholder="Senha" />
+        </div>
+        <button @mouseover="hoverEffect" @mouseout="hoverEffect" type="submit" class="login-button">Entrar</button>
+      </form>
+      <p class="register-link" style="font-size: 1.3rem;">Não possui cadastro? <router-link to="/CadastroAluno" class="register-link-green">Cadastre-se</router-link></p>
     </div>
-  </template>
+  </div>
+</template>
 
+<script>
+import clienteHttp from '../http/index.ts'
 
-  <script>
- export default {
+export default {
   data() {
     return {
       email: '',
@@ -35,13 +36,31 @@
   },
   methods: {
     login() {
-      // Coda fofo o login aqui
-    },
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+
+      clienteHttp.post('/login', formData)
+        .then(resposta => resposta.data)
+        .then(data => {
+          alert('Login bem-sucedido!');
+          
+          const token = data.token;
+          localStorage.setItem('authToken', token);
+          
+          this.$router.push('/home');
+        })
+        .catch(error => {
+          console.error('Erro no login:', error);
+          alert('Erro no login. Por favor, verifique login e senha');
+        });
+        
+    }
   }
 };
+</script>
   
-  </script>
-
   <style scoped>
 
 /*css do logo */
