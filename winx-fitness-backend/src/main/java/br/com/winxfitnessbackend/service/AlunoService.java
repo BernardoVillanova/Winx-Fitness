@@ -25,7 +25,10 @@ public class AlunoService {
         for (AlunoEntity alunoEntity : alunoRepository.findAll()) {
             alunoDtoList.add(
                     new AlunoDto(
-                            alunoEntity.getNome(), alunoEntity.getEmail(), BigDecimal.valueOf(alunoEntity.getPeso()), BigDecimal.valueOf(alunoEntity.getAltura()),
+                            alunoEntity.getNome(),
+                            alunoEntity.getEmail(),
+                            BigDecimal.valueOf(alunoEntity.getPeso()).setScale(2, RoundingMode.CEILING),
+                            BigDecimal.valueOf(alunoEntity.getAltura()).setScale(2, RoundingMode.CEILING),
                             FrequenciaAtividadeFisica.getEnumById(alunoEntity.getSedentario())));
         }
 
