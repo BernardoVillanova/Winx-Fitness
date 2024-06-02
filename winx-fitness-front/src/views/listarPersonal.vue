@@ -24,12 +24,12 @@
       </div>
       <div class="professionals">
         <div v-for="professional in professionals" :key="professional.id" class="professional">
-          <img :src="professional.image" :alt="professional.name">
-          <h2>{{ professional.name }}</h2>
+          <img :src="professional.image" :alt="professional.image">
+          <h2>{{ professional.nome }}</h2>
           <div class="rating">
-            <p>Especialidades: {{ professional.specialty }}</p> 
+            <p>Especialidades: {{ professional.especialidade }}</p> 
           </div>
-          <p>{{ professional.price }}</p>
+          <p>Valor: R$ {{professional.valorAula}}</p>
           <button>Contratar</button>
         </div>
       </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import clienteHttp from '../http/index.ts';
 
 export default {
   data() {
@@ -52,12 +52,12 @@ export default {
   methods: {
     async fetchProfessionals() {
       try {
-        const response = await axios.get('/personals.json');
+        const response = await clienteHttp.get('/personal');
         this.professionals = response.data;
       } catch (error) {
         console.error('Erro ao carregar professionals:', error);
       }
-    }
+    },
   }
 };
 </script>
@@ -139,7 +139,7 @@ h1 {
 
 .filter button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #074173;
   color: white;
   border: none;
   border-radius: 5px;
@@ -161,11 +161,15 @@ h1 {
   border: 1px solid #ccc; /* Se precisar de uma borda, mantenha esta linha */
   border-radius: 5px; /* Bordas arredondadas */
   background-color: #fff; /* Fundo branco */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para melhor visual */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave para melhor visual */
   width: 100%; /* Certifique-se de que os cards ocupem toda a largura disponível */
   box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+  border:none;
+  transition: box-shadow 0.3s ease;
 }
-
+.professional:hover {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
+}
 .professional img {
   width: 100px;
   height: 100px;
@@ -194,7 +198,7 @@ h1 {
 
 .professional button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #074173;
   color: white;
   border: none;
   border-radius: 5px;
