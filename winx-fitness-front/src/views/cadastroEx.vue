@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <header class="header">
-        <a href="/" class="botao">Login</a>
+        <logo/>
         <nav class="nav">
           <button class="btn-mobile" @click="toggleMenu">
             <i :class="menuIcon" id="menuIcon"></i>
@@ -14,7 +14,7 @@
           </ul>
         </nav>
       </header>
-      <h2>Gerenciamento de Exercícios</h2>
+      <h1>Gerenciamento de Exercícios</h1>
       <div class="buttons">
         <button @click="deleteSelected" class="delete-all"><i class="fas fa-trash"></i> Apagar</button>
         <button @click="showForm" class="add-exercise"><i class="fas fa-plus"></i> Adicionar Exercício</button>
@@ -44,8 +44,8 @@
             <td>{{ exercise.repetitions }}</td>
             <td>{{ exercise.weight }}</td>
             <td class="actions">
-              <button @click="editExercise(index)" class="edit"><i class="fas fa-edit"></i></button>
-              <button @click="deleteExercise(index)" class="delete"><i class="fas fa-trash-alt"></i></button>
+              <button @click="editExercise(index)" class="edit">Editar</button>
+              <button @click="deleteExercise(index)" class="delete">Remover</button>
             </td>
           </tr>
         </tbody>
@@ -65,8 +65,12 @@
   
   <script>
   import axios from 'axios';
-  
+  import logo from '../components/logo.vue'
+
   export default {
+  components: {
+    logo
+  },
     data() {
       return {
         currentEditRow: null,
@@ -160,13 +164,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 1000px;
-    margin-top: 20px;
   }
   
   .header {
@@ -274,6 +271,7 @@
     border-radius: 5px;
     cursor: pointer;
     color: #fff;
+    margin: 10px;
   }
   
   .delete-all {
