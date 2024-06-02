@@ -8,29 +8,30 @@
       </div>
     </div>
     <div class="content">
-      <h1>Personals</h1>
+      <h1>Exercícios</h1>
 
       <div class="title-filters">
         <div class="filter">
           <select>
-            <option value="">Filtro especialidades</option>
-            <option value="Musculação">Musculação</option>
-            <option value="Yoga">Yoga</option>
-            <option value="Pilates">Pilates</option>
+            <option value="">Filtro por Grupo Muscular</option>
+            <option value="Peito">Peito</option>
+            <option value="Costas">Costas</option>
+            <option value="Pernas">Pernas</option>
           </select>
           <input type="text" placeholder="Pesquisar por nome">
-          <button>A-Z</button>
+          <button>Pesquisar</button>
         </div>
       </div>
-      <div class="professionals">
-        <div v-for="professional in professionals" :key="professional.id" class="professional">
-          <img :src="professional.image" :alt="professional.image">
-          <h2>{{ professional.nome }}</h2>
-          <div class="rating">
-            <p>Especialidades: {{ professional.especialidade }}</p> 
+      <div class="exercises">
+        <div v-for="exercise in exercises" :key="exercise.id" class="exercise">
+          <img :src="exercise.image" alt="exercise image">
+          <h2>{{ exercise.exerciseName }}</h2>
+          <div class="details">
+            <p>Agrupamento Muscular: {{ exercise.muscleGroup }}</p> 
+            <p>Séries: {{ exercise.series }}</p>
+            <p>Repetições: {{ exercise.repetitions }}</p>
+            <p>Peso: {{ exercise.weight }} kg</p>
           </div>
-          <p>Valor: R$ {{professional.valorAula}}</p>
-          <button>Contratar</button>
         </div>
       </div>
     </div>
@@ -38,9 +39,8 @@
 </template>
 
 <script>
-import clienteHttp from '../http/index.ts';
 import axios from 'axios';
-import logo from '../components/logo.vue'
+import logo from '../components/logo.vue';
 
 export default {
   components: {
@@ -48,19 +48,19 @@ export default {
   },
   data() {
     return {
-      professionals: []
+      exercises: []
     };
   },
   mounted() {
-    this.fetchProfessionals();
+    this.fetchExercises();
   },
   methods: {
-    async fetchProfessionals() {
+    async fetchExercises() {
       try {
-        const response = await clienteHttp.get('/personal');
-        this.professionals = response.data;
+        const response = await axios.get('/exercises.json');
+        this.exercises = response.data;
       } catch (error) {
-        console.error('Erro ao carregar professionals:', error);
+        console.error('Erro ao carregar exercícios:', error);
       }
     },
   }
@@ -144,36 +144,25 @@ h1 {
 
 .filter button {
   padding: 10px 20px;
-  background-color: #074173;
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.professionals {
+.exercises {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 60%;
 }
 
-.professional {
+.exercise {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border: 1px solid #ccc; /* Se precisar de uma borda, mantenha esta linha */
-  border-radius: 5px; /* Bordas arredondadas */
-  background-color: #fff; /* Fundo branco */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave para melhor visual */
-  width: 100%; /* Certifique-se de que os cards ocupem toda a largura disponível */
-  box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
-  border:none;
-  transition: box-shadow 0.3s ease;
-}
-.professional:hover {
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
@@ -181,35 +170,36 @@ h1 {
   width: 100%;
   box-sizing: border-box;
 }
-.professional img {
+
+.exercise img {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
 
-.professional h2 {
+.exercise h2 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
   text-align: center;
 }
 
-.professional .rating {
+.exercise .details {
   font-size: 16px;
   margin-bottom: 5px;
   text-align: center;
 }
 
-.professional p {
+.exercise p {
   font-size: 14px;
   margin-bottom: 5px;
   text-align: center;
 }
 
-.professional button {
+.exercise button {
   padding: 10px 20px;
-  background-color: #074173;
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
