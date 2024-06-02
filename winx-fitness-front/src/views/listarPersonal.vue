@@ -40,6 +40,7 @@
 <script>
 import axios from 'axios';
 import logo from '../components/logo.vue'
+import clienteHttp from '../http/index.ts';
 
 export default {
   components: {
