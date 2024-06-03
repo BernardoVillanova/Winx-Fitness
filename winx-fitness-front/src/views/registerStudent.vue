@@ -109,13 +109,6 @@ export default {
           resposta => alert(resposta.data)
         );
 
-        // const blob = new Blob([formDataJSON], { type: 'application/json' });
-
-        // const link = document.createElement('a');
-        // link.href = window.URL.createObjectURL(blob);
-        // link.download = 'formulario.json';
-        // link.click();
-
         alert('Formulário salvo com sucesso!');
       } catch (error) {
         console.error('Erro ao salvar formulário:', error);
@@ -127,7 +120,7 @@ export default {
 </script>
 
 <style scoped>
-  
+
   body {
     overflow: hidden;
   }
