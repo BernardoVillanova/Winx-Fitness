@@ -44,30 +44,40 @@ body {
   border-radius: 15px;
 }
 
-.menu li:hover {
-  background-color: #ff0000; /* cor de fundo ao passar o mouse */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* sombra ao passar o mouse */
-}
 
 .menu li a {
-  padding: 10px 5px;
+  padding: 10px 10px;
   color: #000000; 
   text-decoration: none;
   font-weight: 500;
   border-radius: 1rem;
   text-align: left;
-
+  position: relative;
 }
 
-.menu li a:hover {
-  color: #ffffff; /* cor do texto ao passar o mouse */
-  text-decoration: none;
+.menu li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #074173;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
+
+.menu li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
 
 .botao {
-  background: #e21;
-  color: #ffffff;
-  padding: 10px 30px;
+  color: #000000;
+  padding: 10px 15px;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
@@ -76,11 +86,14 @@ body {
   box-shadow: 0 0 10px rgba (0, 0, 0, 0.1);
 }
 
+.botao-2:hover, .botao-3:hover {
+  background-color: #052d56; 
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f5f5f5;
 }
 
 h1 {
@@ -95,7 +108,7 @@ img {
 
 
 .botao-2 {
-  background: #e21;
+  background: #074173;
   color: #ffffff;
   padding: 10px 30px;
   text-decoration: none;
@@ -105,7 +118,7 @@ img {
 }
 
 .botao-3 {
-  background: #e21;
+  background: #074173;
   color: #ffffff;
   padding: 10px 40px;
   text-decoration: none;
@@ -151,7 +164,9 @@ img {
 .introducao-texto p {
   font-size: 15px;
   margin-top: 50px;
+  padding-left: 16px;
 }
+
 
 /* BREAKPOINTS */
 
@@ -164,11 +179,11 @@ img {
     margin-right: 100px;
   }
 
-  body {
+  .img-fundo {
     background-position: right 500px center;
     background-position-y: 30px;/* move a imagem de fundo 20px para a direita */
-    background-size: auto
-
+    background-size: auto;
+    z-index: -1;
   }
 }
 @media (max-width: 1350px) {
@@ -180,34 +195,38 @@ img {
     margin-right: 150px;
   }
 
-  body {
+  .img-fundo {
     background-position: left -200px center;
     background-position-y: 30px; /* move a imagem de fundo 20px para a direita */
-    background-size: auto
+    background-size: auto;
+    z-index: -1;
   }
 }
 
 @media (max-width: 1300px) {
-  body {
+  .img-fundo {
     background-position: right 450px center;
     background-position-y: 60px;
-    background-size: auto
+    background-size: auto;
+    z-index: -1; 
   }
 }
 
 @media (max-width: 1250px) {
-  body {
+  .img-fundo {
     background-position: left -250px center;
     background-position-y: 60px;
-    background-size: auto
+    background-size: auto;
+    z-index: -1;
   }
 }
 
 @media (max-width: 1150px) {
-  body {
-    background-position: left -150px center;
+  .img-fundo {
+    background-position: left -350px center;
     background-position-y: 130px;
     background-size: 800px 568px;
+    z-index: -1;
   }
 
   .introducao-texto {
@@ -240,7 +259,7 @@ img {
     padding-top: 60px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* sombra no menu */
     transform: translateX(-250px); /* menu para fora da tela */
-    transition: none;/* transição do menu */
+    transition: none /* transição do menu */
   }
 
   .menu.active {
@@ -262,9 +281,20 @@ img {
     
     z-index: 1001; /* Garante que o botão do menu esteja acima do menu */
   }
+
+  
 }
 
 @media (max-width: 1000px) {
+
+  .img-fundo {
+    background-position: -2000px 0;
+  }
+
+  .introducao {
+    align-items: center;
+    margin-left: 100px;
+  }
   .introducao-texto {
     margin-right: 70px;
   }
@@ -315,21 +345,13 @@ img {
     margin-left: 40px;
     padding: 0 20px;
     display: flex;
-    align-items: center; /* Alinha os itens no eixo transversal (verticalmente) */
-    justify-content: center; /* Alinha os itens no eixo principal (horizontalmente) */
-     /* Alinha o texto ao centro */
+    align-items: center;   
+    justify-content: center;
     
   }
 
-  
-
- 
   .menu li {
-    width: auto; /* largura automática para os itens do menu */
-  }
-
-  .botao {
-    margin-left: -20px;
+    width: auto;  
   }
 
   .botoes {

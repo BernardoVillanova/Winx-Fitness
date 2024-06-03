@@ -7,6 +7,7 @@ import SouProfessor from './views/SouProfessor.vue'
 import Login from './views/loginScreen.vue'
 import Exercicio from './views/MondayExercise.vue'
 import cadastroEx from './views/cadastroEx.vue'
+import SaibaMais from './views/SaibaMais.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/SouProfessor',
     name: 'SouProfessor',
     component: SouProfessor
+  },
+  {
+    path: '/SaibaMais',
+    name: 'SaibaMais',
+    component: SaibaMais
   }
 ]
 

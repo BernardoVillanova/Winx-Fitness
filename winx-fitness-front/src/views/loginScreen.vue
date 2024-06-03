@@ -2,14 +2,11 @@
     <div>
       <div class="background"></div>
       <!-- Título WINX Fitness -->
-      <h1 class="logo">
-      <span class="winx">winx</span>
-      <span class="fitness">FITNESS</span>
-    </h1> 
+      <a href="/" class="logo"><img src="../assets/logo-winx-fitness.svg" alt=""></a>
       <img src="../assets/ImgProjetoWinxFitness.png" class="background-image" alt="Imagem de fundo" />
       <!-- Div de login -->
       <div class="login-container">
-        <h2 class="login-title" style="font-weight: bold; color:#0c7474;">Login</h2>
+        <h2 class="login-title" style="font-weight: bold; color:#074173;">Login</h2>
         <form @submit.prevent="login" class="form">
           <div class="form-group">
             <input type="email" id="email" v-model="email" required class="input" placeholder="Email  " />
@@ -22,6 +19,7 @@
         <p class="register-link" style="font-size: 1.3rem;">Não possui cadastro? <router-link to="/CadastroAluno" class="register-link-green">Cadastre-se</router-link></p>
       </div>
     </div>
+    
   </template>
 
 
@@ -51,8 +49,9 @@
   margin-bottom: 2rem;
   font-weight: bold;
   position: absolute;
+  padding: 3rem 3rem;
   top: 2%;
-  left: 2%;
+  left: 9%;
 }
 
 .winx {
@@ -127,7 +126,7 @@
   }
   .form-group input{
     height: 4.4rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: #e9e9e9;
@@ -149,7 +148,7 @@
     width: 100%;
     height: 4rem;
     font-size: 1.2rem;
-    background-color: #0c7474;
+    background-color: #074173;
     color: white;
     border: none;
     border-radius: 0.5rem;
@@ -168,7 +167,7 @@
   }
 
   .register-link a {
-    color: #0c7474;
+    color: #074173;
     text-decoration: none;
   }
 
