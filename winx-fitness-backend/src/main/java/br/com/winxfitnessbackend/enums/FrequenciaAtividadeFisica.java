@@ -3,9 +3,9 @@ package br.com.winxfitnessbackend.enums;
 import java.util.Arrays;
 
 public enum FrequenciaAtividadeFisica {
-    SEDENTARIO(1, "SEDENTARIO"),
-    MODERADO(2, "MODERADO"),
-    INTENSO(3, "INTENSO");
+    SEDENTARIO(0, "SEDENTARIO"),
+    MODERADO(1, "MODERADO"),
+    INTENSO(2, "INTENSO");
 
     int id;
     String descricao;
@@ -33,5 +33,15 @@ public enum FrequenciaAtividadeFisica {
         }
 
         return "";
+    }
+
+    public static int getIdByDescricao(String descricao) {
+        for (FrequenciaAtividadeFisica frequenciaAtividadeFisica : values()) {
+            if (frequenciaAtividadeFisica.descricao.equals(descricao)) {
+                return frequenciaAtividadeFisica.id;
+            }
+        }
+
+        return 0;
     }
 }

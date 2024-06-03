@@ -8,7 +8,8 @@ public record AlunoCadastroDto(
         String nome,
         String email,
         String password,
+        String birthdate,
         BigDecimal peso,
         BigDecimal altura,
-        FrequenciaAtividadeFisica frequenciaAtividadeFisica
+        String frequencia
 ){}
