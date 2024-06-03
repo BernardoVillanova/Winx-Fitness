@@ -1,0 +1,222 @@
+[
+  {
+    "name": "João Silva",
+    "email": "joao.silva@example.com",
+    "exerciseName": "Supino Reto",
+    "muscleGroup": "Peito",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 70,
+    "image": "https://www.w3schools.com/howto/img_avatar.png"
+  },
+  {
+    "name": "Maria Oliveira",
+    "email": "maria.oliveira@example.com",
+    "exerciseName": "Agachamento",
+    "muscleGroup": "Pernas",
+    "series": 4,
+    "repetitions": 10,
+    "weight": 60,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Carlos Pereira",
+    "email": "carlos.pereira@example.com",
+    "exerciseName": "Remada Curvada",
+    "muscleGroup": "Costas",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 50,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Ana Costa",
+    "email": "ana.costa@example.com",
+    "exerciseName": "Desenvolvimento com Halteres",
+    "muscleGroup": "Ombros",
+    "series": 3,
+    "repetitions": 10,
+    "weight": 12,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Pedro Lima",
+    "email": "pedro.lima@example.com",
+    "exerciseName": "Rosca Direta",
+    "muscleGroup": "Bíceps",
+    "series": 3,
+    "repetitions": 15,
+    "weight": 15,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Beatriz Souza",
+    "email": "beatriz.souza@example.com",
+    "exerciseName": "Tríceps Testa",
+    "muscleGroup": "Tríceps",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 10,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Ricardo Santos",
+    "email": "ricardo.santos@example.com",
+    "exerciseName": "Levantamento Terra",
+    "muscleGroup": "Pernas",
+    "series": 4,
+    "repetitions": 8,
+    "weight": 100,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Fernanda Mendes",
+    "email": "fernanda.mendes@example.com",
+    "exerciseName": "Abdominal",
+    "muscleGroup": "Abdômen",
+    "series": 4,
+    "repetitions": 20,
+    "weight": "Corporal",
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Lucas Almeida",
+    "email": "lucas.almeida@example.com",
+    "exerciseName": "Flexão de Braço",
+    "muscleGroup": "Peito",
+    "series": 3,
+    "repetitions": 15,
+    "weight": "Corporal",
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Sofia Moreira",
+    "email": "sofia.moreira@example.com",
+    "exerciseName": "Cadeira Extensora",
+    "muscleGroup": "Pernas",
+    "series": 4,
+    "repetitions": 12,
+    "weight": 50,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Gabriel Fernandes",
+    "email": "gabriel.fernandes@example.com",
+    "exerciseName": "Pull Down",
+    "muscleGroup": "Costas",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 55,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Laura Cardoso",
+    "email": "laura.cardoso@example.com",
+    "exerciseName": "Elevação Frontal",
+    "muscleGroup": "Ombros",
+    "series": 3,
+    "repetitions": 10,
+    "weight": 8,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Marcelo Nunes",
+    "email": "marcelo.nunes@example.com",
+    "exerciseName": "Puxada Frontal",
+    "muscleGroup": "Costas",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 60,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Renata Lima",
+    "email": "renata.lima@example.com",
+    "exerciseName": "Leg Press",
+    "muscleGroup": "Pernas",
+    "series": 4,
+    "repetitions": 10,
+    "weight": 120,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "André Campos",
+    "email": "andre.campos@example.com",
+    "exerciseName": "Crucifixo",
+    "muscleGroup": "Peito",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 18,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Camila Cunha",
+    "email": "camila.cunha@example.com",
+    "exerciseName": "Elevação Lateral",
+    "muscleGroup": "Ombros",
+    "series": 3,
+    "repetitions": 15,
+    "weight": 6,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Leonardo Teixeira",
+    "email": "leonardo.teixeira@example.com",
+    "exerciseName": "Pull Over",
+    "muscleGroup": "Costas",
+    "series": 3,
+    "repetitions": 10,
+    "weight": 30,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Larissa Lima",
+    "email": "larissa.lima@example.com",
+    "exerciseName": "Panturrilha em Pé",
+    "muscleGroup": "Pernas",
+    "series": 4,
+    "repetitions": 15,
+    "weight": 25,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Felipe Cardoso",
+    "email": "felipe.cardoso@example.com",
+    "exerciseName": "Supino Inclinado",
+    "muscleGroup": "Peito",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 60,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Bruna Nogueira",
+    "email": "bruna.nogueira@example.com",
+    "exerciseName": "Flexora",
+    "muscleGroup": "Pernas",
+    "series": 4,
+    "repetitions": 12,
+    "weight": 45,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "André Matos",
+    "email": "andre.matos@example.com",
+    "exerciseName": "Rosca Martelo",
+    "muscleGroup": "Bíceps",
+    "series": 3,
+    "repetitions": 12,
+    "weight": 20,
+    "image": "https://www.w3schools.com/howto/img_avatar.png"
+  },
+  {
+    "name": "Patrícia Gomes",
+    "email": "patricia.gomes@example.com",
+    "exerciseName": "Extensão de Tríceps",
+    "muscleGroup": "Tríceps",
+    "series": 3,
+    "repetitions": 15,
+    "weight": 12,
+    "image": "https://via.placeholder.com/100"
+  }
+]

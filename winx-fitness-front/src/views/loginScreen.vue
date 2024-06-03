@@ -18,13 +18,13 @@
         </form>
         <p class="register-link" style="font-size: 1.3rem;">Não possui cadastro? <router-link to="/CadastroAluno" class="register-link-green">Cadastre-se</router-link></p>
       </div>
-    </div>
-    
+    </div> 
   </template>
 
+<script>
+import clienteHttp from '../http/index.ts'
 
-  <script>
- export default {
+export default {
   data() {
     return {
       email: '',
@@ -33,13 +33,31 @@
   },
   methods: {
     login() {
-      // Coda fofo o login aqui
-    },
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+
+      clienteHttp.post('/login', formData)
+        .then(resposta => resposta.data)
+        .then(data => {
+          alert('Login bem-sucedido!');
+          
+          const token = data.token;
+          localStorage.setItem('authToken', token);
+          
+          this.$router.push('/home');
+        })
+        .catch(error => {
+          console.error('Erro no login:', error);
+          alert('Erro no login. Por favor, verifique login e senha');
+        });
+        
+    }
   }
 };
+</script>
   
-  </script>
-
   <style scoped>
 
 /*css do logo */

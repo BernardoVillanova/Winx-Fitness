@@ -5,9 +5,11 @@ import Sobre from './views/Sobre.vue'
 import registerStudent from './views/registerStudent.vue'
 import SouProfessor from './views/SouProfessor.vue'
 import Login from './views/loginScreen.vue'
-import Exercicio from './views/MondayExercise.vue'
+import Exercicio from './views/listarExercicio.vue'
+import listarPersonal from './views/listarPersonal.vue'
 import cadastroEx from './views/cadastroEx.vue'
 import SaibaMais from './views/SaibaMais.vue'
+import listarExercicio from './views/listarExercicio.vue'
 
 const routes = [
   {
@@ -19,6 +21,11 @@ const routes = [
     path: '/cadastroEx',
     name: 'cadastroEx',
     component: cadastroEx
+  },
+  {
+    path: '/listarExercicio',
+    name: 'listarExercicio',
+    component: listarExercicio
   },
   {
     path: '/Exercicio',
@@ -48,8 +55,13 @@ const routes = [
   {
     path: '/SaibaMais',
     name: 'SaibaMais',
-    component: SaibaMais
-  }
+    component: SaibaMais 
+   },
+   {
+    path: '/listarPersonal',
+    name: 'listarPersonal',
+    component: listarPersonal
+    }
 ]
 
 const router = createRouter({

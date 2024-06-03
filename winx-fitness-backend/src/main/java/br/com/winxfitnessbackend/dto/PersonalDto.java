@@ -1,6 +1,9 @@
 package br.com.winxfitnessbackend.dto;
 
+import java.math.BigDecimal;
+
 public record PersonalDto(
         String nome,
-        String email
+        String especialidade,
+        BigDecimal valorAula
 ){}
