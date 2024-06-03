@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div class="wrapper">
     <div class="background"></div>
-    <h1 class="logo">
-      <span class="winx">Winx</span>
-      <span class="fitness">FITNESS</span>
-    </h1>
+    <a href="/" class="logo"><img src="../assets/logo-winx-fitness.svg" alt=""></a>
+
     <img src="../assets/telaCadAluno.png" class="background-image" alt="Imagem de fundo" />
     <div class="login-container">
       <h2 class="login-title">Cadastro Aluno</h2>
@@ -46,6 +44,21 @@
       </form>
     </div>
   </div>
+
+  <footer>
+        <div class="github-icon">
+          <a href="https://github.com/orgs/WinxFHO/people" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="github-link">
+          <p>Siga-nos no GitHub!</p>
+          
+        </div>
+        <div class="copyright">
+          <p>© 2024 Winx Fitness</p>
+          <p>Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
 </template>
 
 <script>
@@ -114,6 +127,7 @@ export default {
 </script>
 
 <style scoped>
+  
   body {
     overflow: hidden;
   }
@@ -124,9 +138,10 @@ export default {
     margin-bottom: 2rem;
     font-weight: bold;
     position: absolute;
+    padding: 3rem 3rem;
     top: 2%;
-    left: 2%;
-  }
+    left: 9%;
+}
 
   .winx {
     color: white;
@@ -163,6 +178,7 @@ export default {
   #confirmPassword {
     width: 100%;
   }
+  
 
   .login-container {
     position: absolute;
@@ -237,7 +253,7 @@ export default {
     width: 100%;
     height: 3rem;
     font-size: 1rem;
-    background-color: #0c7474;
+    background-color: #074173;
     color: white;
     border: none;
     border-radius: 0.5rem;
@@ -264,6 +280,36 @@ export default {
   .register-link a:hover {
     text-decoration: underline;
   }
+
+  footer {
+  flex: 0 0 auto;
+  padding: 20px;
+  text-align: center;
+  background: #d3d2d2;
+}
+
+.github-link p {
+  margin: 5px 0;
+}
+
+.github-icon i {
+  font-size: 24px; /* Tamanho do ícone */
+}
+
+.github-icon a {
+    text-decoration: none; /* Remove sublinhado padrão */
+}
+
+.github-icon a:visited {
+    color: #052d56; /* Mantém a cor original após visitar */
+    text-decoration: none; /* Remove a decoração do texto */
+}
+
+.copyright {
+  margin-top: 20px;
+  color: #6c757d; /* Cor cinza para o texto de direitos autorais */
+}
+  
 
   @media (max-width: 1200px) {
     .background-image {
