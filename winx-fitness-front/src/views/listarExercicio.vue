@@ -57,7 +57,7 @@ export default {
   methods: {
     async fetchExercises() {
       try {
-        const response = await axios.get('/exercises.json');
+        const response = await axios.get('/exercicio');
         this.exercises = response.data;
       } catch (error) {
         console.error('Erro ao carregar exercícios:', error);
