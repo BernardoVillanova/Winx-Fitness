@@ -8,7 +8,7 @@
       <ul class="menu" :class="{ 'active': isMenuOpen }">
         <li><router-link to="/" class="router-link">Home</router-link></li>
         <li><router-link to="/registerStudent" class="router-link">Quero ser Aluno</router-link></li>
-        <li><router-link to="/SouProfessor" class="router-link">Sou professor</router-link></li>
+        <li><router-link to="/SouProfessor" class="router-link">Quero ser Professor</router-link></li>
         <li><router-link to="/Login" class="botao router-link" >Login</router-link></li>
       </ul>
     </nav>
