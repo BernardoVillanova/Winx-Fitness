@@ -9,9 +9,7 @@
   .logo {
     color: #0c7474;
     font-size: 3.5vw;
-    /* margin-bottom: 2rem; */
     font-weight: bold;
-    /* position: absolute; */
     top: 2%;
     left: 2%;
   }

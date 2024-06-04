@@ -120,7 +120,6 @@ export default {
 </script>
 
 <style scoped>
-
   body {
     overflow: hidden;
   }
@@ -134,7 +133,7 @@ export default {
     padding: 3rem 3rem;
     top: 2%;
     left: 9%;
-}
+  }
 
   .winx {
     color: white;
@@ -171,7 +170,6 @@ export default {
   #confirmPassword {
     width: 100%;
   }
-  
 
   .login-container {
     position: absolute;
@@ -275,34 +273,33 @@ export default {
   }
 
   footer {
-  flex: 0 0 auto;
-  padding: 20px;
-  text-align: center;
-  background: #d3d2d2;
-}
+    flex: 0 0 auto;
+    padding: 20px;
+    text-align: center;
+    background: #d3d2d2;
+  }
 
-.github-link p {
-  margin: 5px 0;
-}
+  .github-link p {
+    margin: 5px 0;
+  }
 
-.github-icon i {
-  font-size: 24px; /* Tamanho do ícone */
-}
+  .github-icon i {
+    font-size: 24px; /* Tamanho do ícone */
+  }
 
-.github-icon a {
-    text-decoration: none; /* Remove sublinhado padrão */
-}
+  .github-icon a {
+      text-decoration: none; /* Remove sublinhado padrão */
+  }
 
-.github-icon a:visited {
-    color: #052d56; /* Mantém a cor original após visitar */
-    text-decoration: none; /* Remove a decoração do texto */
-}
+  .github-icon a:visited {
+      color: #052d56; /* Mantém a cor original após visitar */
+      text-decoration: none; /* Remove a decoração do texto */
+  }
 
-.copyright {
-  margin-top: 20px;
-  color: #6c757d; /* Cor cinza para o texto de direitos autorais */
-}
-  
+  .copyright {
+    margin-top: 20px;
+    color: #6c757d; /* Cor cinza para o texto de direitos autorais */
+  }
 
   @media (max-width: 1200px) {
     .background-image {
