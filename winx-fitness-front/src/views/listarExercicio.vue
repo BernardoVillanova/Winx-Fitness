@@ -24,13 +24,11 @@
       </div>
       <div class="exercises">
         <div v-for="exercise in exercises" :key="exercise.id" class="exercise">
-          <img :src="exercise.image" alt="exercise image">
-          <h2>{{ exercise.exerciseName }}</h2>
+          <img :src='exercise.image' alt="exercise image">
+          <h2>{{ exercise.nome }}</h2>
           <div class="details">
-            <p>Agrupamento Muscular: {{ exercise.muscleGroup }}</p> 
-            <p>Séries: {{ exercise.series }}</p>
-            <p>Repetições: {{ exercise.repetitions }}</p>
-            <p>Peso: {{ exercise.weight }} kg</p>
+            <p>{{ exercise.descricao }}</p>
+            <!-- <p>Peso: {{ exercise.weight }} kg</p> -->
           </div>
         </div>
       </div>
@@ -39,7 +37,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import clienteHttp from '../http/index.ts';
 import logo from '../components/logo.vue';
 
 export default {
@@ -57,13 +56,13 @@ export default {
   methods: {
     async fetchExercises() {
       try {
-        const response = await axios.get('/exercises.json');
+        const response = await clienteHttp.get('/exercicio');
         this.exercises = response.data;
       } catch (error) {
         console.error('Erro ao carregar exercícios:', error);
       }
-    },
-  }
+    }
+}
 };
 </script>
 
