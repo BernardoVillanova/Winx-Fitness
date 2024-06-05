@@ -11,25 +11,35 @@
           <input type="text" id="nome" v-model="nome" required class="input" placeholder="Nome" />
         </div>
         <div class="form-group">
+          <input type="password" id="senha" v-model="senha" required class="input" placeholder="Senha" />
+        </div>
+        <div class="form-group">
           <input type="email" id="email" v-model="email" required class="input" placeholder="Email" />
         </div>
         <div class="form-group">
-          <input type="password" id="password" v-model="password" required class="input" placeholder="Senha" />
+          <input type="text" id="telefone" v-model="telefone" class="input" placeholder="Telefone" />
         </div>
         <div class="form-group">
-          <input type="password" id="confirmPassword" v-model="confirmPassword" required class="input" placeholder="Confirme a Senha" />
+          <label for="dataNascimento" class="label">Data de Nascimento</label>
+          <input type="date" id="dataNascimento" v-model="dataNascimento" class="input" />
         </div>
         <div class="form-group">
-          <label for="birthdate" class="label">Data de Nascimento</label>
-          <input type="date" id="birthdate" v-model="birthdate" required class="input" />
+          <input type="text" id="endereco" v-model="endereco" required class="input" placeholder="Endereço" />
         </div>
         <div class="form-group">
-          <label for="especialidade" class="label">Especialidade</label>
-          <input type="text" id="especialidade" v-model="especialidade" required class="input" placeholder="Especialidade" />
+          <input type="text" id="cidade" v-model="cidade" required class="input" placeholder="Cidade" />
         </div>
         <div class="form-group">
-          <label for="experiencia" class="label">Anos de Experiência</label>
-          <input type="number" id="experiencia" v-model="experiencia" required class="input" placeholder="Anos de Experiência" />
+          <input type="text" id="estado" v-model="estado" required class="input" placeholder="Estado" />
+        </div>
+        <div class="form-group">
+          <input type="number" id="cep" v-model="cep" class="input" placeholder="CEP" />
+        </div>
+        <div class="form-group">
+          <input type="number" id="valorAula" v-model="valorAula" class="input" placeholder="Valor da Aula" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="especialidade" v-model="especialidade" class="input" placeholder="Especialidade" />
         </div>
         <button @mouseover="hoverEffect" @mouseout="hoverEffect" @click="submitForm" type="submit" class="login-button">Enviar</button>
       </form>
@@ -57,35 +67,40 @@ export default {
   data() {
     return {
       nome: '',
+      senha: '',
       email: '',
-      password: '',
-      confirmPassword: '',
-      birthdate: '',
-      especialidade: '',
-      experiencia: ''
+      telefone: '',
+      dataNascimento: '',
+      endereco: '',
+      cidade: '',
+      estado: '',
+      cep: null,
+      valorAula: null,
+      especialidade: ''
     };
   },
 
   methods: {
-    validatePassword() {
-      if (this.password !== this.confirmPassword) {
-        alert('As senhas não coincidem.');
-        return false;
-      }
-      return true;
-    },
+
     async submitForm() {
-      if (!this.validatePassword()) {
-        return;
-      }
+
+      if (!this.cidade) {
+      alert('Por favor, insira a cidade.');
+      return false;
+    }
 
       const formData = {
         nome: this.nome,
+        senha: this.senha,
         email: this.email,
-        password: this.password,
-        birthdate: this.birthdate,
-        especialidade: this.especialidade,
-        experiencia: this.experiencia
+        telefone: this.telefone,
+        dataNascimento: this.dataNascimento,
+        endereco: this.endereco,
+        cidade: this.cidade,
+        estado: this.estado,
+        cep: this.cep,
+        valorAula: this.valorAula,
+        especialidade: this.especialidade
       };
 
       try {
@@ -100,7 +115,9 @@ export default {
         alert('Erro ao salvar formulário. Por favor, tente novamente.');
       }
     }
-  }
+  },
+  
+  
 }
 </script>
 

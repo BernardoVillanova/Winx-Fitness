@@ -4,14 +4,7 @@
       <logo/>
       <nav class="nav">
         <button class="btn-mobile" @click="toggleMenu">
-          <i :class="menuIcon" id="menuIcon"></i>
         </button>
-        <ul :class="{menu: true, active: isMenuOpen}" id="menu">
-          <li><a href="/" class="router-link">Home</a></li>
-          <li><a href="/Sobre" class="router-link">Sobre</a></li>
-          <li><a href="/QueroSerAluno" class="router-link">Quero ser Aluno</a></li>
-          <li><a href="/SouProfessor" class="router-link">Sou professor</a></li>
-        </ul>
       </nav>
     </header>
     <h1>Gerenciamento de Exercícios</h1>
