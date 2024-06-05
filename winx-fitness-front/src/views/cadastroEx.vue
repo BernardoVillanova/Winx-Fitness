@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import logo from '../components/logo.vue'
+import clienteHttp from '../http/index.ts';
+import logo from '../components/logo.vue';
 
 export default {
   components: {
@@ -98,22 +98,14 @@ export default {
       if (exerciseName && muscleGroup && series && repetitions && image) {
         const formData = { exerciseName, muscleGroup, series, repetitions, image };
         try {
-          const formDataJSON = JSON.stringify(formData);
-          // await axios.post('/api/exercise', formData, { headers: { 'Content-Type': 'application/json' } });
-
-          const blob = new Blob([formDataJSON], { type: 'application/json' });
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = 'exercise.json';
-          link.click();
-
-          alert('Exercício salvo com sucesso!');
-          
+          // Verifica se estamos editando um exercício existente
           if (this.currentEditRow !== null) {
+            await clienteHttp.put(`/exercicio/${this.exercises[this.currentEditRow].id}`, formData);
             Object.assign(this.exercises[this.currentEditRow], formData);
             this.currentEditRow = null;
           } else {
-            this.exercises.push({ ...formData, selected: false });
+            const response = await clienteHttp.post('/exercicio', formData);
+            this.exercises.push({ ...response.data, selected: false });
           }
           this.showExerciseForm = false;
         } catch (error) {
@@ -133,8 +125,14 @@ export default {
       Object.assign(this.form, exercise);
       this.showExerciseForm = true;
     },
-    deleteExercise(index) {
-      this.exercises.splice(index, 1);
+    async deleteExercise(index) {
+      try {
+        await clienteHttp.delete(`/exercicio/${this.exercises[index].id}`);
+        this.exercises.splice(index, 1);
+      } catch (error) {
+        console.error('Erro ao deletar exercício:', error);
+        alert('Erro ao deletar exercício. Por favor, tente novamente.');
+      }
     },
     clearForm() {
       Object.assign(this.form, {
@@ -144,6 +142,14 @@ export default {
         repetitions: '',
         image: ''
       });
+    }
+  },
+  async mounted() {
+    try {
+      const response = await clienteHttp.get('/exercicio');
+      this.exercises = response.data;
+    } catch (error) {
+      console.error('Erro ao carregar exercícios:', error);
     }
   }
 };
