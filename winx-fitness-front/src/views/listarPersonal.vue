@@ -1,10 +1,13 @@
 <template>
   <div class="container">
     <div class="header">
-      <logo/>
-      <div class="user">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="user">
-        Minha conta
+      <a href="/" class="logo"><img src="../assets/logo-winx-fitness.svg" alt=""></a>
+      <div class="user-menu">
+        <button @click="toggleUserMenu" class="account-button">Minha conta</button>
+        <div v-if="showUserMenu" class="dropdown-menu">
+          <p>{{ user.email }}</p>
+          <button @click="logout" id="button_logout">Logout</button>
+        </div>
       </div>
     </div>
     <div class="content">
@@ -29,7 +32,7 @@
           <div class="rating">
             <p>Especialidades: {{ professional.especialidade }}</p> 
           </div>
-          <p>Valor: R$ {{professional.valorAula}}</p>
+          <p>Valor: R$ {{ professional.valorAula }}</p>
           <button>Contratar</button>
         </div>
       </div>
@@ -38,8 +41,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import logo from '../components/logo.vue'
+import logo from '../components/logo.vue';
 import clienteHttp from '../http/index.ts';
 
 export default {
@@ -48,11 +50,14 @@ export default {
   },
   data() {
     return {
-      professionals: []
+      professionals: [],
+      user: {},
+      showUserMenu: false
     };
   },
   mounted() {
     this.fetchProfessionals();
+    this.getUserInfo();
   },
   methods: {
     async fetchProfessionals() {
@@ -63,6 +68,29 @@ export default {
         console.error('Erro ao carregar professionals:', error);
       }
     },
+    getUserInfo() {
+      const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      if (userInfo) {
+        this.user = userInfo;
+      } else {
+        // Redirecionar para a página de login se as informações do usuário não estiverem disponíveis
+        this.$router.push('/login');
+      }
+    },
+    toggleUserMenu() {
+      this.showUserMenu = !this.showUserMenu;
+    },
+    async logout() {
+      try {
+        await clienteHttp.post('/logout');
+      } catch (error) {
+        console.error('Erro ao fazer logout:', error);
+      } finally {
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('userInfo');
+        this.$router.push('/login');
+      }
+    }
   }
 };
 </script>
@@ -80,7 +108,7 @@ export default {
   align-items: center;
   width: 100%;
   padding: 20px;
-  background-color: #f0f0f0;
+  background-color: #d1d1d1;
 }
 
 .logo {
@@ -174,10 +202,10 @@ h1 {
 }
 .professional:hover {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
-  border: 1px solid #ccc;
+  border:none;
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
 }
@@ -216,4 +244,62 @@ h1 {
   cursor: pointer;
   margin-top: 10px;
 }
+.professional button:hover {
+  background-color: #1971be;
+  transition:0.3s;
+}
+.container {
+  /* estilos do container */
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* outros estilos */
+}
+.user-menu {
+  position: relative;
+}
+.account-button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.account-button:hover {
+  background-color: #51a5ff;
+  transition:0.3s;
+
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+.dropdown-menu p {
+  margin: 0 0 10px;
+}
+.dropdown-menu button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+.dropdown-menu button:hover {
+  background-color: #d32f2f;
+}
+
 </style>
