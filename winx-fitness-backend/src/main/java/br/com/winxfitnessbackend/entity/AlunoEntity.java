@@ -27,9 +27,6 @@ public class AlunoEntity {
     @Column
     private String email;
 
-    @Column
-    private Long telefone;
-
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -38,12 +35,6 @@ public class AlunoEntity {
 
     @Column
     private Float altura;
-
-    @Column
-    private String objetivo;
-
-    @Column(name = "nivel_fumante")
-    private Integer fumante;
 
     @Column(name = "nivel_sedentario")
     private Integer sedentario;

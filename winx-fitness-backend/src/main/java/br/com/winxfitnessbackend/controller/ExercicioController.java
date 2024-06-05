@@ -21,7 +21,7 @@ public class ExercicioController {
     }
 
     @GetMapping("/exercicio")
-    public ResponseEntity<List<ExercicioDto>> findAll(@RequestHeader ServletRequest request) {
+    public ResponseEntity<List<ExercicioDto>> findAll(ServletRequest request) {
         try {
 //            ManualAuth.validaAuth(request);
             return ResponseEntity.ok(exercicioService.retornaTodosExercicios());
@@ -31,7 +31,7 @@ public class ExercicioController {
     }
 
     @PostMapping("/exercicio")
-    public ResponseEntity<Void> insereNovoExercicio(@RequestHeader ServletRequest request, @RequestBody ExercicioDto exercicioDto) {
+    public ResponseEntity<Void> insereNovoExercicio(ServletRequest request, @RequestBody ExercicioDto exercicioDto) {
         try {
 //            ManualAuth.validaAuth(request);
             exercicioService.insereNovoExercicio(exercicioDto);
@@ -42,7 +42,7 @@ public class ExercicioController {
     }
 
     @PutMapping("/exercicio/{id}")
-    public ResponseEntity<Void> insereNovoExercicio(@RequestHeader ServletRequest request, @PathVariable("id") Long id, @RequestBody ExercicioDto exercicioDto) {
+    public ResponseEntity<Void> insereNovoExercicio(ServletRequest request, @PathVariable("id") Long id, @RequestBody ExercicioDto exercicioDto) {
         try {
 //            ManualAuth.validaAuth(request);
             exercicioService.atualizaExercicio(id, exercicioDto);
@@ -53,7 +53,7 @@ public class ExercicioController {
     }
 
     @DeleteMapping("/exercicio/{id}")
-    public ResponseEntity<Void> deletaExercicio(@RequestHeader ServletRequest request, @PathVariable("id") Long id) {
+    public ResponseEntity<Void> deletaExercicio(ServletRequest request, @PathVariable("id") Long id) {
         try {
 //            ManualAuth.validaAuth(request);
             exercicioService.deleteExercicio(id);

@@ -21,7 +21,7 @@ services:
       retries: 5
 
   app:
-    image: docker.io/lf09/winx-fitness-backend:1.2
+    image: docker.io/lf09/winx-fitness-backend:1.5
     container_name: winx-fitness-backend-container
     depends_on:
       mysql:

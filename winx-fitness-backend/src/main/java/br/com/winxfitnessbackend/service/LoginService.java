@@ -20,11 +20,11 @@ public class LoginService {
     PersonalRepository personalRepository;
 
     private Optional<Long> verificaLoginAluno(LoginDto loginDto) {
-        return alunoRepository.findByNameAndSenha(loginDto.usuario(), loginDto.senha());
+        return alunoRepository.findByEmailAndSenha(loginDto.usuario(), loginDto.senha());
     }
 
     private Optional<Long> verificaLoginPersonal(LoginDto loginDto) {
-        return personalRepository.findByNameAndSenha(loginDto.usuario(), loginDto.senha());
+        return personalRepository.findByEmailAndSenha(loginDto.usuario(), loginDto.senha());
     }
 
     public String efetuarLogin(LoginDto loginDto) {

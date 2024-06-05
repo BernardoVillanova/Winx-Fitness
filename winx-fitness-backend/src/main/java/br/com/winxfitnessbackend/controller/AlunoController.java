@@ -33,7 +33,7 @@ public class AlunoController {
         }
     }
 
-    @PostMapping("aluno")
+    @PostMapping("/aluno")
     public ResponseEntity<Void> insereNovoExercicio(ServletRequest request, @RequestBody AlunoCadastroDto alunoCadastroDto) {
         try {
 //            ManualAuth.validaAuth(request);

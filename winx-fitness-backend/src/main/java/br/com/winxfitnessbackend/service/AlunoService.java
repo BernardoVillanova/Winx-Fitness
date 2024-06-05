@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,12 +38,21 @@ public class AlunoService {
     }
 
     public void insereNovoAluno(AlunoCadastroDto alunoCadastroDto) {
+        List<String> date = Arrays.stream(alunoCadastroDto.birthdate().split("-")).toList();
+        int frequenciaAtividadeFisica = FrequenciaAtividadeFisica.valueOf(alunoCadastroDto.frequencia().toUpperCase()).ordinal();
+
         AlunoEntity alunoEntity = new AlunoEntity();
         alunoEntity.setNome(alunoCadastroDto.nome());
         alunoEntity.setEmail(alunoCadastroDto.email());
         alunoEntity.setSenha(alunoCadastroDto.password());
-        alunoEntity.setAltura(alunoCadastroDto.altura().setScale(2, RoundingMode.CEILING).floatValue());
-        alunoEntity.setPeso(alunoCadastroDto.peso().setScale(2, RoundingMode.CEILING).floatValue());
+        alunoEntity.setDataNascimento(
+                LocalDate.of(Integer.valueOf(date.get(0)), Integer.valueOf(date.get(1)), Integer.valueOf(date.get(2)))
+        );
+        alunoEntity.setAltura(
+                alunoCadastroDto.altura().setScale(2, RoundingMode.CEILING).floatValue());
+        alunoEntity.setPeso(
+                alunoCadastroDto.peso().setScale(2, RoundingMode.CEILING).floatValue());
+        alunoEntity.setSedentario(frequenciaAtividadeFisica);
 
         alunoRepository.save(alunoEntity);
     }
