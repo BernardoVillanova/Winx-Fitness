@@ -1,32 +1,29 @@
 <template>
   <div>
     <div class="background"></div>
-    <!-- Título WINX Fitness -->
     <a href="/" class="logo"><img src="../assets/logo-winx-fitness.svg" alt=""></a>
     <img src="../assets/ImgProjetoWinxFitness.png" class="background-image" alt="Imagem de fundo" />
-    <!-- Div de login -->
     <div class="login-container">
       <h2 class="login-title" style="font-weight: bold; color:#074173;">Login</h2>
       <form @submit.prevent="login" class="form">
         <div class="form-group">
-          <input type="email" id="email" v-model="email" required class="input" placeholder="Email  " />
+          <input type="email" id="email" v-model="email" required class="input" placeholder="Email" />
         </div>
         <div class="form-group">
           <input type="password" id="password" v-model="password" required class="input" placeholder="Senha" />
         </div>
-        <!-- Botões de Aluno e Professor -->
         <div class="button-group">
-          <button @click="loginAs('aluno')" @mouseover="hoverEffect" @mouseout="hoverEffect" class="login-button">Sou Aluno</button>
-          <button @click="loginAs('professor')" @mouseover="hoverEffect" @mouseout="hoverEffect" class="login-button">Sou Personal</button>
+          <button @click.prevent="loginAs('ALUNO')" @mouseover="hoverEffect" @mouseout="hoverEffect" class="login-button">Sou Aluno</button>
+          <button @click.prevent="loginAs('PERSONAL')" @mouseover="hoverEffect" @mouseout="hoverEffect" class="login-button">Sou Personal</button>
         </div>
       </form>
       <p class="register-link" style="font-size: 1.3rem;">Não possui cadastro? <router-link to="/registerStudent" class="register-link-green">Cadastre-se</router-link></p>
     </div>
-  </div> 
+  </div>
 </template>
 
 <script>
-import clienteHttp from '../http/index.ts'
+import clienteHttp from '../http/index.ts';
 
 export default {
   data() {
@@ -36,30 +33,42 @@ export default {
     };
   },
   methods: {
-    loginAs(role) {
+    loginAs(tipoUsuario) {
       const formData = {
-        email: this.email,
-        password: this.password,
+        usuario: this.email,
+        senha: this.password,
+        tipoUsuario: tipoUsuario
       };
 
-      clienteHttp.post('/login', formData)
-        .then(resposta => resposta.data)
-        .then(data => {
-          alert('Login bem-sucedido!');
-          
-          const token = data.token;
-          localStorage.setItem('authToken', token);
+      console.log('Payload da requisição:', formData); // Log do payload
 
-          this.$router.push('/home');
-          
-          if (role === 'aluno') {
-            this.$router.push('/homeAluno');
-          } else if (role === 'professor') {
-            this.$router.push('/homeProfessor');
+      clienteHttp.post('/login', formData)
+        .then(resposta => {
+          const data = resposta.data;
+          console.log('Resposta do servidor:', data); // Log da resposta
+          alert('Login bem-sucedido!');
+
+          const token = data.token;
+          const userInfo = {
+            email: this.email,
+            tipoUsuario: tipoUsuario
+          };
+
+          localStorage.setItem('authToken', token);
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+          if (tipoUsuario === 'ALUNO') {
+            this.$router.push('/listarPersonal');
+          } else if (tipoUsuario === 'PERSONAL') {
+            this.$router.push('/cadastroEx');
           }
         })
         .catch(error => {
-          console.error('Erro no login:', error);
+          if (error.response) {
+            console.error('Erro no login:', error.response.data);
+          } else {
+            console.error('Erro no login:', error.message);
+          }
           alert('Erro no login. Por favor, verifique login e senha');
         });
     },
@@ -69,7 +78,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 /* css do logo */
 .logo {
@@ -205,7 +213,7 @@ export default {
 
 .register-link-green {
   color: #0c7474; /* Cor verde utilizada no login */
-  font-weight: bold
+  font-weight: bold;
 }
 
 .login-button:hover {
