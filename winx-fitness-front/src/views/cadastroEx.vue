@@ -24,9 +24,9 @@
         <tr>
           <th></th>
           <th>Nome do Exercício</th>
-          <th>Agrupamento Muscular</th>
-          <th>Séries</th>
-          <th>Repetições</th>
+          <th>Descricao Exercicio</th>
+          <!-- <th>Séries</th>
+          <th>Repetições</th> -->
           <th>Imagem</th>
           <th>Ações</th>
         </tr>
@@ -34,10 +34,10 @@
       <tbody>
         <tr v-for="(exercise, index) in exercises" :key="index">
           <td><input type="checkbox" v-model="exercise.selected"></td>
-          <td>{{ exercise.exerciseName }}</td>
-          <td>{{ exercise.muscleGroup }}</td>
-          <td>{{ exercise.series }}</td>
-          <td>{{ exercise.repetitions }}</td>
+          <td>{{ exercise.nome }}</td>
+          <td>{{ exercise.descricao }}</td>
+          <!-- <td>{{ exercise.series }}</td>
+          <td>{{ exercise.repetitions }}</td> -->
           <td><img :src="exercise.image" alt="Exercise Image" width="50" height="50"></td>
           <td class="actions">
             <button @click="editExercise(index)" class="edit">Editar</button>
@@ -47,10 +47,10 @@
       </tbody>
     </table>
     <div v-if="showExerciseForm" class="form-group">
-      <input type="text" v-model="form.exerciseName" placeholder="Nome do Exercício">
-      <input type="text" v-model="form.muscleGroup" placeholder="Agrupamento Muscular">
-      <input type="number" v-model="form.series" placeholder="Séries">
-      <input type="number" v-model="form.repetitions" placeholder="Repetições">
+      <input type="text" v-model="form.nome" placeholder="Nome do Exercício">
+      <input type="text" v-model="form.descricao" placeholder="Agrupamento Muscular">
+      <!-- <input type="number" v-model="form.series" placeholder="Séries">
+      <input type="number" v-model="form.repetitions" placeholder="Repetições"> -->
       <input type="text" v-model="form.image" placeholder="Link da Imagem">
       <button @click="saveExercise" class="add-exercise">Salvar</button>
     </div>
@@ -58,8 +58,9 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import logo from '../components/logo.vue'
+import clienteHttp from '../http/index.ts';
 
 export default {
   components: {
@@ -72,10 +73,10 @@ export default {
       showExerciseForm: false,
       exercises: [],
       form: {
-        exerciseName: '',
-        muscleGroup: '',
-        series: '',
-        repetitions: '',
+        nome: '',
+        descricao: '',
+        // series: '',
+        // repetitions: '',
         image: ''
       }
     };
@@ -94,21 +95,21 @@ export default {
       this.clearForm();
     },
     async saveExercise() {
-      const { exerciseName, muscleGroup, series, repetitions, image } = this.form;
-      if (exerciseName && muscleGroup && series && repetitions && image) {
-        const formData = { exerciseName, muscleGroup, series, repetitions, image };
+      const { nome, descricao, image } = this.form;
+      if (nome && descricao && image) {
+        const formData = { nome, descricao, image };
         try {
-          const formDataJSON = JSON.stringify(formData);
-          // await axios.post('/api/exercise', formData, { headers: { 'Content-Type': 'application/json' } });
+          // const formDataJSON = JSON.stringify(formData);
+          await clienteHttp.post('/exercicio', formData, { headers: { 'Content-Type': 'application/json' } });
 
-          const blob = new Blob([formDataJSON], { type: 'application/json' });
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = 'exercise.json';
-          link.click();
+          // const blob = new Blob([formDataJSON], { type: 'application/json' });
+          // const link = document.createElement('a');
+          // link.href = window.URL.createObjectURL(blob);
+          // link.download = 'exercise.json';
+          // link.click();
 
           alert('Exercício salvo com sucesso!');
-          
+
           if (this.currentEditRow !== null) {
             Object.assign(this.exercises[this.currentEditRow], formData);
             this.currentEditRow = null;

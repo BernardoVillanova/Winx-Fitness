@@ -2,6 +2,7 @@ package br.com.winxfitnessbackend.controller;
 
 
 import br.com.winxfitnessbackend.config.ManualAuth;
+import br.com.winxfitnessbackend.dto.ExercicioConsultaDto;
 import br.com.winxfitnessbackend.dto.ExercicioDto;
 import br.com.winxfitnessbackend.service.ExercicioService;
 import jakarta.servlet.ServletRequest;
@@ -21,7 +22,7 @@ public class ExercicioController {
     }
 
     @GetMapping("/exercicio")
-    public ResponseEntity<List<ExercicioDto>> findAll(ServletRequest request) {
+    public ResponseEntity<List<ExercicioConsultaDto>> findAll(ServletRequest request) {
         try {
 //            ManualAuth.validaAuth(request);
             return ResponseEntity.ok(exercicioService.retornaTodosExercicios());

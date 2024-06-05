@@ -1,5 +1,6 @@
 package br.com.winxfitnessbackend.service;
 
+import br.com.winxfitnessbackend.dto.ExercicioConsultaDto;
 import br.com.winxfitnessbackend.dto.ExercicioDto;
 import br.com.winxfitnessbackend.entity.ExercicioEntity;
 import br.com.winxfitnessbackend.repository.ExercicioRepository;
@@ -15,12 +16,12 @@ public class ExercicioService {
     @Autowired
     private ExercicioRepository exercicioRepository;
 
-    public List<ExercicioDto> retornaTodosExercicios() {
-        List<ExercicioDto> exercicioDtoList = new ArrayList<>();
+    public List<ExercicioConsultaDto> retornaTodosExercicios() {
+        List<ExercicioConsultaDto> exercicioDtoList = new ArrayList<>();
 
         try {
             for (ExercicioEntity objEntity : exercicioRepository.findAll()) {
-                exercicioDtoList.add(new ExercicioDto(objEntity.getId(), objEntity.getNomeExercicio(), objEntity.getDescricao(), objEntity.getImage()));
+                exercicioDtoList.add(new ExercicioConsultaDto(objEntity.getId(), objEntity.getNomeExercicio(), objEntity.getDescricao(), objEntity.getImage()));
             }
         } catch (Exception ex) {
 
